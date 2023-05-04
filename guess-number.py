@@ -10,7 +10,6 @@ def is_valid(valid):
 
 def guess_number():
     random_number = randint(1, 100)
-    print(random_number)
     a = 1
     while a != random_number:
         a = int(input())
