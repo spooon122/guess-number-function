@@ -1,26 +1,33 @@
 from random import *
 
 
-def is_valid(valid):
-    if 1 <= valid <= 100:
+def not_in_range(a, x, y):
+    if not int(x) < a or int(y) < a:
+        print('Выбранное число не входит в диапазон рандома')
         return True
     else:
         return False
 
 
 def guess_number():
-    random_number = randint(1, 100)
-    a = 1
+    x, y = input(), input()
+    while not x.isdigit():
+        print('"X" not is digit')
+        x = input()
+    while not y.isdigit():
+        print('"Y" not is digit')
+        y = input()
+    random_number = randint(int(x), int(y))
+    print(random_number)
+    a = 0
     while a != random_number:
         a = int(input())
         if random_number < a:
-            if not is_valid(a):
-                print('Выбранное числа не входит в диапазон рандома')
+            if not_in_range(a, x, y):
                 continue
             print('Слишком много, попробуйте еще раз')
         elif random_number > a:
-            if not is_valid(a):
-                print('Выбранное числа не входит в диапазон рандома')
+            if not_in_range(a, x, y):
                 continue
             print('Слишком мало, попробуйте еще раз')
         else:
@@ -30,8 +37,7 @@ def guess_number():
                 guess_number()
             else:
                 print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
-                break
+            break
 
 
 guess_number()
-
